@@ -16,6 +16,7 @@ function App() {
   const status_list = ["未着手", "進行中", "完了"];
 
   const [todos, setTodos] = useState([]);
+  const [id, setId] = useState(0);
   const [title, setTitle] = useState('');
   const [content, setContent] = useState('');
   const [status, setStatus] = useState('');
@@ -27,7 +28,8 @@ function App() {
   const handleSubmit = event => {
     event.preventDefault()
     if (title === '' || content === '' || status === '') return
-    setTodos(todos => [...todos, { title, content, status }])
+    setTodos(todos => [...todos, { id, title, content, status }])
+    setId(id + 1);
     setTitle('')
     setContent('')
     setStatus('')
