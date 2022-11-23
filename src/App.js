@@ -1,9 +1,5 @@
-import './App.css';
 import React, { useState } from 'react';
-import Card from '@mui/material/Card';
-import CardContent from '@mui/material/CardContent';
-import Typography from '@mui/material/Typography';
-import CardActions from '@mui/material/CardActions';
+import TodoCard from './Card';
 import Button from '@mui/material/Button';
 import TextField from '@mui/material/TextField';
 import Radio from '@mui/material/Radio';
@@ -13,8 +9,6 @@ import FormControl from '@mui/material/FormControl';
 import FormLabel from '@mui/material/FormLabel';
 
 function App() {
-  const status_list = ["未着手", "進行中", "完了"];
-
   const [todos, setTodos] = useState([]);
   const [id, setId] = useState(0);
   const [title, setTitle] = useState('');
@@ -82,24 +76,14 @@ function App() {
       </form>
       <ul>
         {todos.map((todo, index) => (
-          <Card variant="outlined">
-            <CardContent>
-              <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
-                {status_list[todo.status]}
-              </Typography>
-              <Typography variant="h5" component="div">
-                {todo.title}
-              </Typography>
-              <Typography sx={{ mb: 1.5 }} color="text.secondary">
-                {todo.content}
-              </Typography>
-              <CardActions>
-                <Button variant="outlined" >
-                  <span onClick={() => handleRemoveTask(index)}>削除する</span>
-                </Button>
-              </CardActions>
-            </CardContent>
-          </Card>
+          <TodoCard
+            key={todo.id}
+            title={todo.title}
+            content={todo.content}
+            status={todo.status}
+            index={index}
+            handleRemoveTask={(index) => handleRemoveTask(index)}
+          />
         ))}
       </ul>
     </div>
