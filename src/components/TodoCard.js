@@ -12,20 +12,20 @@ function TodoCard(props) {
     <Card variant="outlined">
       <CardContent>
         <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
-          {status_list[props.status]}
+          {status_list[props.todo.status]}
         </Typography>
         <Typography variant="h5" component="div">
-          {props.title}
+          {props.todo.title}
         </Typography>
         <Typography sx={{ mb: 1.5 }} color="text.secondary">
-          {props.content}
+          {props.todo.content}
         </Typography>
       </CardContent>
-      <CardActions>
-        <Button variant="outlined" onClick={() => props.handleRemoveTask(props.index)}>
+      {/* <CardActions>
+        <Button variant="outlined" onClick={() => handleRemoveTask(index)}>
           削除する
         </Button>
-      </CardActions>
+      </CardActions> */}
     </Card>
   )
 }

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import TodoCard from './Card';
+import TodoCard from './components/TodoCard';
 import Button from '@mui/material/Button';
 import TextField from '@mui/material/TextField';
 import Radio from '@mui/material/Radio';
@@ -75,14 +75,10 @@ function App() {
         </Button>
       </form>
       <ul>
-        {todos.map((todo, index) => (
+        {todos.map((todo) => (
           <TodoCard
             key={todo.id}
-            title={todo.title}
-            content={todo.content}
-            status={todo.status}
-            index={index}
-            handleRemoveTask={(index) => handleRemoveTask(index)}
+            todo={todo}
           />
         ))}
       </ul>
