@@ -19,13 +19,12 @@ code {
 
 .header .header-title {
   color: white;
-  padding: 10px 0 10px 0;
-  margin: 0 20px;
+  padding: 10px 0;
+  margin: 0 40px;
 }
 
 .header .filter-todo-button {
-  margin-left: auto;
-  margin-right: 20px;
+  margin: 10px 40px 10px auto;
 }
 
 .header .filter-todo-button .choice {
