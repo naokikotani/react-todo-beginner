@@ -9,9 +9,9 @@ function TodoCard(props) {
   const status_list = ["未着手", "進行中", "完了"];
 
   return (
-    <Card variant="outlined">
+    <Card variant="outlined" className='task-card'>
       <CardContent>
-        <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
+        <Typography sx={{ fontSize: 14 }} className='card-status' gutterBottom>
           {status_list[props.todo.status]}
         </Typography>
         <Typography variant="h5" component="div">
@@ -21,11 +21,18 @@ function TodoCard(props) {
           {props.todo.content}
         </Typography>
       </CardContent>
-      {/* <CardActions>
-        <Button variant="outlined" onClick={() => handleRemoveTask(index)}>
-          削除する
-        </Button>
-      </CardActions> */}
+      <div className='card-button-list'>
+        <CardActions>
+          <Button variant="outlined" className='card-delete-button' onClick={() => props.handleRemoveTask(props.index)}>
+            削除する
+          </Button>
+        </CardActions>
+        <CardActions>
+          <Button variant="outlined" className='card-edit-button' onClick={() => props.handleOpenEditForm(props.todo.id, props.todo.title, props.todo.content, props.todo.status)}>
+            編集する
+          </Button>
+        </CardActions>
+      </div>
     </Card>
   )
 }

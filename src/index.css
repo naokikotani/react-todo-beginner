@@ -11,3 +11,95 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.form-list {
+  display: flex;
+  width: 700px;
+  margin: 30px auto 60px auto;
+}
+
+.creat-task-form {
+  position: relative;
+  height: 300px;
+  margin: auto;
+}
+
+.creat-task-form .creat-task-form-title {
+  color: #1976D2;
+  font-weight: bold;
+  margin: 40px auto 0px auto;
+}
+
+.creat-task-form .new-task-title {
+  margin-top: 10px;
+}
+
+.creat-task-form .new-task-content {
+  margin-top: 15px;
+}
+
+.creat-task-form .new-task-status {
+  margin-top: 15px;
+}
+
+.creat-task-form .submit-new-task {
+  margin-top: 15px;
+  font-weight: bold;
+}
+
+.edit-task-form {
+  position: relative;
+  height: 300px;
+  margin: auto;
+}
+
+.edit-task-form .edit-task-form-title {
+  color: #1976D2;
+  font-weight: bold;
+  margin: 40px auto 0px auto;
+}
+
+.edit-task-form .edit-task-title {
+  margin-top: 10px;
+}
+
+.edit-task-form .edit-task-content {
+  margin-top: 15px;
+}
+
+.edit-task-form .edit-task-status {
+  margin-top: 15px;
+}
+
+.edit-task-form .submit-edit-task {
+  margin-top: 15px;
+  font-weight: bold;
+}
+
+.task-card-list {
+  padding: 20px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(240px, 100%), 1fr));
+  gap: 1rem;
+}
+
+.task-card {
+  margin-top: 10px;
+  width: 243px;
+}
+
+.task-card .card-status {
+  border-radius: 10%;
+}
+
+.task-card .card-button-list {
+  display: flex;
+}
+
+.task-card .card-delete-button {
+  font-weight: bold;
+}
+
+.task-card .card-edit-button {
+  font-weight: bold;
+}
