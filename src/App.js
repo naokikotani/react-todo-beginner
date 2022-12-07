@@ -1,5 +1,7 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import TodoCard from './components/TodoCard';
+import MenuItem from '@mui/material/MenuItem';
+import Select from '@mui/material/Select';
 import Button from '@mui/material/Button';
 import TextField from '@mui/material/TextField';
 import Radio from '@mui/material/Radio';
@@ -18,6 +20,9 @@ function App() {
   const [editTitle, setEditTitle] = useState('');
   const [editContent, setEditContent] = useState('');
   const [editStatus, setEditStatus] = useState('');
+  const [filteredTodos, setFilteredTodos] = useState([])
+
+  const [filter, setFilter] = useState('all')
 
   const handleTitle = e => setTitle(e.target.value);
   const handleContent = e => setContent(e.target.value);
@@ -37,12 +42,6 @@ function App() {
     setStatus('')
   }
 
-  const handleRemoveTask = index => {
-    const newTodos = [...todos]
-    newTodos.splice(index, 1)
-    setTodos(newTodos)
-  }
-
   const handleOpenEditForm = (id, title, content, status) => {
     setEditId(id)
     setEditTitle(title)
@@ -59,18 +58,52 @@ function App() {
         todo.id === editId ? { ...todo, id: editId, title: editTitle, content: editContent, status: editStatus } : todo
       )
     )
-    console.log(todos)
     setEditId()
     setEditTitle('')
     setEditContent('')
     setEditStatus('')
   }
 
+  useEffect(() => {
+    const filteringTodos = () => {
+      switch (filter) {
+        case '0':
+          setFilteredTodos(todos.filter((todo) => todo.status === '0'))
+          break
+        case '1':
+          setFilteredTodos(todos.filter((todo) => todo.status === '1'))
+          break
+        case '2':
+          setFilteredTodos(todos.filter((todo) => todo.status === '2'))
+          break
+        default:
+          setFilteredTodos(todos)
+      }
+    }
+    filteringTodos()
+  }, [filter, todos])
+
   return (
-    <div className="App">
+    <div className="app">
+      <header className='header'>
+        <h1 className='header-title'>タスク管理アプリ</h1>
+        <Select
+          className='filter-todo-button'
+          labelId="filter-todo-label"
+          id="filter-todo-button"
+          label="絞りこみ"
+          value={filter}
+          onChange={(e) => setFilter(e.target.value)}
+        >
+          <MenuItem value="all">全て</MenuItem>
+          <MenuItem value="0">未着手</MenuItem>
+          <MenuItem value="1">進行中</MenuItem>
+          <MenuItem value="2">完了</MenuItem>
+        </Select>
+      </header>
       <div className='form-list'>
-        <form onSubmit={handleSubmit} className="creat-task-form">
-          <h3 className='creat-task-form-title'>
+        <form onSubmit={handleSubmit} className="create-task-form">
+          <h3 className='create-task-form-title'>
             新規タスク追加
           </h3>
           <div className='new-task-title'>
@@ -151,12 +184,13 @@ function App() {
         </form>
       </div>
       <ul className='task-card-list'>
-        {todos.map((todo, index) => (
+        {filteredTodos.map((todo, index) => (
           <TodoCard
             key={todo.id}
             todo={todo}
             index={index}
-            handleRemoveTask={handleRemoveTask}
+            todos={todos}
+            setTodos={setTodos}
             handleOpenEditForm={handleOpenEditForm}
           />
         ))}

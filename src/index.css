@@ -12,37 +12,57 @@ code {
     monospace;
 }
 
+.header {
+  background-color: #1976D2;
+  display: flex;
+}
+
+.header .header-title {
+  color: white;
+  padding: 10px 0 10px 0;
+  margin: 0 20px;
+}
+
+.header .filter-todo-button {
+  margin-left: auto;
+  margin-right: 20px;
+}
+
+.header .filter-todo-button .choice {
+  color: white;
+}
+
 .form-list {
   display: flex;
   width: 700px;
   margin: 30px auto 60px auto;
 }
 
-.creat-task-form {
+.create-task-form {
   position: relative;
   height: 300px;
   margin: auto;
 }
 
-.creat-task-form .creat-task-form-title {
+.create-task-form .create-task-form-title {
   color: #1976D2;
   font-weight: bold;
   margin: 40px auto 0px auto;
 }
 
-.creat-task-form .new-task-title {
+.create-task-form .new-task-title {
   margin-top: 10px;
 }
 
-.creat-task-form .new-task-content {
+.create-task-form .new-task-content {
   margin-top: 15px;
 }
 
-.creat-task-form .new-task-status {
+.create-task-form .new-task-status {
   margin-top: 15px;
 }
 
-.creat-task-form .submit-new-task {
+.create-task-form .submit-new-task {
   margin-top: 15px;
   font-weight: bold;
 }
