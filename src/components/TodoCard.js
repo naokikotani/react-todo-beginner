@@ -8,6 +8,12 @@ import Button from '@mui/material/Button';
 function TodoCard(props) {
   const status_list = ["未着手", "進行中", "完了"];
 
+  const handleRemoveTask = index => {
+    const newTodos = [...props.todos]
+    newTodos.splice(index, 1)
+    props.setTodos(newTodos)
+  }
+
   return (
     <Card variant="outlined" className='task-card'>
       <CardContent>
@@ -23,7 +29,7 @@ function TodoCard(props) {
       </CardContent>
       <div className='card-button-list'>
         <CardActions>
-          <Button variant="outlined" className='card-delete-button' onClick={() => props.handleRemoveTask(props.index)}>
+          <Button variant="outlined" className='card-delete-button' onClick={() => handleRemoveTask(props.index)}>
             削除する
           </Button>
         </CardActions>
